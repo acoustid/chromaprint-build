@@ -1,7 +1,7 @@
-build:
+build_image:
   stage: build
   script:
-    - docker build --no-cache=true -t docker.oxygene.sk/acoustid/chromaprint-build:latest .
+    - docker build -t docker.oxygene.sk/acoustid/chromaprint-build:latest .
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN docker.oxygene.sk
     - docker push docker.oxygene.sk/acoustid/chromaprint-build:latest
   tags:
