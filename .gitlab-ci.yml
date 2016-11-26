@@ -1,8 +1,9 @@
-build_image:
+build:
   stage: build
-  script:
-    - docker build -t docker.oxygene.sk/acoustid/chromaprint-build:latest .
+  before_script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN docker.oxygene.sk
-    - docker push docker.oxygene.sk/acoustid/chromaprint-build:latest
+  script:
+    - docker build -t docker.oxygene.sk/acoustid/chromaprint-build:android .
+    - docker push docker.oxygene.sk/acoustid/chromaprint-build:android
   tags:
     - docker-host

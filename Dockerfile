@@ -1,9 +1,12 @@
-FROM ubuntu:latest
+FROM docker.oxygene.sk/acoustid/chromaprint-build:latest
+
+ENV ANDROID_NDK /opt/android-ndk
 
 RUN \
-  DEBIAN_FRONTEND=noninteractive \
-  apt-get -y update && \
-  apt-get -y install \
-    build-essential gcc-multilib g++ g++-multilib mingw-w64 yasm wget curl pkg-config cmake unzip \
-    libavcodec-dev libavformat-dev libavutil-dev libavresample-dev \
-    libfftw3-dev libgtest-dev libboost-all-dev
+  cd /opt && \
+  wget https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip && \
+  unzip android-ndk-*.zip && \
+  rm android-ndk-*.zip && \
+  mv android-ndk-* android-ndk
+
+RUN cd /opt && git clone https://github.com/taka-no-me/android-cmake.git
