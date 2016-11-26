@@ -4,8 +4,8 @@ ENV ANDROID_NDK /opt/android-ndk
 
 RUN \
   cd /opt && \
-  wget https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip && \
-  unzip android-ndk-*.zip && \
+  wget -q https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip && \
+  unzip -q android-ndk-*.zip && \
   rm android-ndk-*.zip && \
   mv android-ndk-* android-ndk
 
