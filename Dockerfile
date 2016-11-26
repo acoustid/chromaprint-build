@@ -9,4 +9,8 @@ RUN \
   rm android-ndk-*.zip && \
   mv android-ndk-* android-ndk
 
-RUN cd /opt && git clone https://github.com/taka-no-me/android-cmake.git
+RUN cd /opt && \
+    wget -q https://github.com/taka-no-me/android-cmake/archive/master.zip && \
+    unzip -q master.zip && \
+    rm master.zip && \
+    mv android-cmake-master android-cmake
